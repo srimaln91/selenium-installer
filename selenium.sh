@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 SERVICE_NAME=selenium
-PATH_TO_JAR=/usr/local/bin/selenium-server-standalone.jar
+PATH_TO_JAR=/usr/local/bin/selenium-server-standalone-3.5.3.jar
 CHROME_DRIVER=/usr/local/bin/chromedriver
 PID_PATH_NAME=/tmp/selenium-pid
 START_COMMAND="java -Dwebdriver.chrome.driver=$CHROME_DRIVER -jar $PATH_TO_JAR"
@@ -9,7 +9,7 @@ case $1 in
     start)
         echo "Starting $SERVICE_NAME ..."
         if [ ! -f $PID_PATH_NAME ]; then
-            nohup $START_COMMAND /tmp 2>> /dev/null >> /dev/null &
+            nohup $START_COMMAND &
                         echo $! > $PID_PATH_NAME
             echo "$SERVICE_NAME started ..."
         else
