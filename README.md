@@ -2,12 +2,18 @@
 A bash script to install Selenium server with Google Chrome web driver on Ubuntu 16.04 as a service.
 
 
-#### How to use:
+#### How to install:
 
 ```
-git clone https://github.com/srimaln91/selenium-installer.git
-cd selenium-installer
-sudo bash selenium_install.sh
+$ git clone https://github.com/srimaln91/selenium-installer.git
+$ cd selenium-installer
+$ sudo bash selenium_install.sh
+```
+
+#### How to install:
+
+```
+$ selenium start
 ```
 
 If you have any problems with this, Please create an issue on Github. Contributions are welcome. :)
