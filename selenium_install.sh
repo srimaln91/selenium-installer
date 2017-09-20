@@ -30,7 +30,7 @@ fi
 
 TEMP_PATH="/tmp/chromedriver"
 mkdir $TEMP_PATH && pushd $TEMP_PATH
-wget $CHR_DRIVER
+wget $CHR_DRIVER -P $TEMP_PATH
 unzip ${TEMP_PATH}/chromedriver_linux64.zip
 sudo mv -f ./chromedriver /usr/local/bin/chromedriver
 sudo chown root:root /usr/local/bin/chromedriver
@@ -41,8 +41,8 @@ printf "${GREEN}Installed Chrome web driver.\n${NC}"
 #download and install selenium server
 SELENIUM_VERSION="3.5.3"
 SELENIUM_JAR_FILE=selenium-server-standalone-$SELENIUM_VERSION.jar
-wget http://selenium-release.storage.googleapis.com/$(echo $SELENIUM_VERSION | cut -d'.' -f-2)/$SELENIUM_JAR_FILE
-mv -f $SELENIUM_JAR_FILE /usr/local/bin
+wget http://selenium-release.storage.googleapis.com/$(echo $SELENIUM_VERSION | cut -d'.' -f-2)/$SELENIUM_JAR_FILE -P $TEMP_PATH
+mv -f $TEMP_PATH/$SELENIUM_JAR_FILE /usr/local/bin
 chown root:root /usr/local/bin/$SELENIUM_JAR_FILE
 chmod 755 /usr/local/bin/$SELENIUM_JAR_FILE
 
@@ -52,12 +52,7 @@ printf "${GREEN}Installed Selenium server.\n${NC}"
 popd
 
 # Setup init script
-cp ./selenium.sh /usr/local/bin/selenium
+cp ./selenium /usr/local/bin/selenium
 chmod +x /usr/local/bin/selenium
-
-# Setup systemd service
-cp selenium /etc/systemd/system/selenium.service
-chown root:root /etc/systemd/system/selenium.service
-chmod 755 /etc/systemd/system/selenium.service
 
 printf "${GREEN}Installation is successful.\n${NC}"

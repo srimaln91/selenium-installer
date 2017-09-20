@@ -1,12 +1,12 @@
-[Unit]
-Description=Selenium Service
+#!/bin/bash
 
-[Service]
-Type=oneshot
-ExecStart=/usr/local/bin/selenium.sh start
-ExecStop=/usr/local/bin/selenium.sh stop
-ExecReload=/usr/local/bin/selenium.sh restart
-RemainAfterExit=yes
+CHROME_DRIVER=/usr/local/bin/chromedriver
+JAVA_BINARY=/usr/bin/java
+SELENIUM_SERVER_JAR=/usr/local/bin/selenium-server-standalone-3.5.3.jar
 
-[Install]
-WantedBy=multi-user.target
+case $1 in
+
+    start)
+        $JAVA_BINARY -Dwebdriver.chrome="$CHROME_DRIVER" -jar $SELENIUM_SERVER_JAR
+    ;;
+esac
