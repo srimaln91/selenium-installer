@@ -25,7 +25,7 @@ VERSION="$(uname -m)"
 if [ "${VERSION}" == "x86_64:" ]; then
 	CHR_DRIVER="https://chromedriver.storage.googleapis.com/2.32/chromedriver_linux32.zip"
 else
-	CHR_DRIVER="https://chromedriver.storage.googleapis.com/2.32/chromedriver_linux64.zip"
+	CHR_DRIVER="https://chromedriver.storage.googleapis.com/2.38/chromedriver_linux64.zip"
 fi
 
 TEMP_PATH="/tmp/chromedriver"
